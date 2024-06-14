@@ -1,0 +1,67 @@
+
+<br>
+*select row to retrieve duty records for selected individual
+<table mat-table [dataSource]="people" class="mat-elevation-z8">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let astronaut" (click)="onRowClicked(astronaut)"> {{astronaut.name}} </td>
+  </ng-container>
+
+  <!-- Rank Column -->
+  <ng-container matColumnDef="currentRank">
+    <th mat-header-cell *matHeaderCellDef> Current Rank </th>
+    <td mat-cell *matCellDef="let astronaut" (click)="onRowClicked(astronaut)"> {{astronaut.currentRank}} </td>
+  </ng-container>
+
+  <!-- Duty Title Column -->
+  <ng-container matColumnDef="currentDutyTitle">
+    <th mat-header-cell *matHeaderCellDef> Current Duty Title </th>
+    <td mat-cell *matCellDef="let astronaut" (click)="onRowClicked(astronaut)"> {{astronaut.currentDutyTitle}} </td>
+  </ng-container>
+
+  <!-- Career Start Date Column -->
+  <ng-container matColumnDef="careerStartDate">
+    <th mat-header-cell *matHeaderCellDef> Career Start Date </th>
+    <td mat-cell *matCellDef="let astronaut" (click)="onRowClicked(astronaut)"> {{astronaut.careerStartDate | date}} </td>
+  </ng-container>
+
+  <!-- Career End Date Column -->
+  <ng-container matColumnDef="careerEndDate">
+    <th mat-header-cell *matHeaderCellDef> Career End Date </th>
+    <td mat-cell *matCellDef="let astronaut" (click)="onRowClicked(astronaut)"> {{astronaut.careerEndDate | date}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  <br>
+  <br>
+
+  <br>
+<div *ngIf="selectedDuties.length > 0">
+  <h2 class="center-text">Historical Records Of Duties of {{selectedPersonName}} </h2>
+  <table mat-table [dataSource]="selectedDuties" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="rank">
+      <th mat-header-cell *matHeaderCellDef>  Rank </th>
+      <td mat-cell *matCellDef="let duty"> {{duty.rank}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="dutyTitle">
+      <th mat-header-cell *matHeaderCellDef>  Duty Title </th>
+      <td mat-cell *matCellDef="let duty"> {{duty.dutyTitle}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dutyStartDate">
+      <th mat-header-cell *matHeaderCellDef>  Duty Start Date </th>
+      <td mat-cell *matCellDef="let duty">  {{duty.dutyStartDate | date}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dutyEndDate">
+      <th mat-header-cell *matHeaderCellDef>  Duty End Date </th>
+      <td mat-cell *matCellDef="let duty">  {{duty.dutyEndDate | date}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayeddutyColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayeddutyColumns;"></tr>
+  </table>
+</div>

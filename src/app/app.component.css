@@ -1,0 +1,17 @@
+.scaled-image {
+    width: 100px;
+    height: auto; /* Maintain aspect ratio */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; 
+    position: relative;
+    background-color: #b7c4d3; 
+  }
